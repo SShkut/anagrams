@@ -5,13 +5,13 @@ import static java.lang.Character.isAlphabetic;
 public class Anagram {
 	
 	public String createAnagram(String text) {		
-		String[] words = text.split(" ");		
+		final String DELIMITER = "\\b";
+		String[] words = text.split(DELIMITER);
 		StringBuilder result = new StringBuilder();
 		
 		for (String word : words) {
 			result.append(reverseWord(word));
-			result.append(" ");
-		}		
+		}
 		return result.toString();
 	}
 	
