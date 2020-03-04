@@ -1,0 +1,43 @@
+package com.foxminded.anagram;
+
+import static java.lang.Character.isAlphabetic;
+
+public class Anagram {
+	
+	public String createAnagram(String text) {		
+		String[] words = text.split(" ");		
+		StringBuilder result = new StringBuilder();
+		
+		for (String word : words) {
+			result.append(reverseWord(word));
+			result.append(" ");
+		}		
+		return result.toString();
+	}
+	
+	private String reverseWord(String word) {		
+		char[] chars = word.toCharArray();		
+		int leftEdge = 0;
+		int rightEdge = chars.length - 1;
+		
+		while (leftEdge < rightEdge) {
+			if (!isAlphabetic(chars[leftEdge])) {
+				leftEdge++;
+			} else if (!isAlphabetic(chars[rightEdge])) {
+				rightEdge--;
+			} else {
+				swap(chars, leftEdge, rightEdge);
+				leftEdge++;
+				rightEdge--;
+			}
+		}		
+		return String.valueOf(chars);
+	}
+	
+	private char[] swap(char[] chars, int firstIndex, int secondIndex) {		
+		char temp = chars[firstIndex];
+		chars[firstIndex] = chars[secondIndex];
+		chars[secondIndex] = temp;		
+		return chars;
+	}
+}
