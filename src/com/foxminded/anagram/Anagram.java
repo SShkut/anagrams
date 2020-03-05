@@ -4,8 +4,9 @@ import static java.lang.Character.isAlphabetic;
 
 public class Anagram {
 	
+	private static final String DELIMITER = "\\b";
+
 	public String createAnagram(String text) {		
-		final String DELIMITER = "\\b";
 		String[] words = text.split(DELIMITER);
 		StringBuilder result = new StringBuilder();
 		
