@@ -1,10 +1,10 @@
-package com.foxminded.anagram;
+package main.java.com.foxminded.anagram;
 
 import static java.lang.Character.isAlphabetic;
 
 public class Anagram {
 	
-	private static final String DELIMITER = "\\b";
+	private static final String DELIMITER = "((?<= )|(?= ))";
 
 	public String createAnagram(String text) {		
 		String[] words = text.split(DELIMITER);
