@@ -2,52 +2,55 @@ package com.foxminded.anagram;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class AnagramTest {
 
-	Anagram anagram = new Anagram();
+	private Anagram anagram;
+
+	@BeforeEach
+	void initialize() {
+		anagram = new Anagram();
+	}
 
 	@Test
-	void testEmptyString() {
+	void givenEmptyText_whenCreateAnagram_thenEmptyText() {
 		assertEquals("", anagram.createAnagram(""));
 	}
 
 	@Test
-	void testNullString() {
-		Assertions.assertThrows(NullPointerException.class, () -> {
-			anagram.createAnagram(null);
-		});
+	void givenNullValue_whenCreateAnagram_thenNullValue() {
+		assertEquals(null, anagram.createAnagram(null));
 	}
 
 	@Test
-	void testOneAlphabeticalSymbol() {
+	void geivenOneLetter_whenCreateAnagram_thenSameLetter() {
 		assertEquals("a", anagram.createAnagram("a"));
 	}
 
 	@Test
-	void testOneSpecialSymbol() {
+	void givenSpecialSymbol_whenCreateAnagram_thenSameSymbol() {
 		assertEquals("@", anagram.createAnagram("@"));
 	}
 
 	@Test
-	void testOneAlphabeticalWord() {
+	void givenAphabeticalWord_whenCreateAnagram_thenReversedWord() {
 		assertEquals("cba", anagram.createAnagram("abc"));
 	}
 
 	@Test
-	void testOneSpecialSymbolWord() {
-		assertEquals("@!#$", anagram.createAnagram("@!#$"));
+	void givenNotAlphabeticalSequence_whenCreateAnagram_thenSameNotAlphabeticalSequence() {
+		assertEquals("@!#$1", anagram.createAnagram("@!#$1"));
 	}
 
 	@Test
-	void testCombinedPhrase() {
+	void givenSentenceWithAllCharacters_whenCreateAnagram_thenReverseEachWordExceptNotAlphabeticalCharacters() {
 		assertEquals("d1cba hgf!e", anagram.createAnagram("a1bcd efg!h"));
 	}
 
 	@Test
-	void testMoreThanOneBlankCharacter() {
+	void givenSentenceWithMultipleSpaces_whenCreateAnagram_thenPreserveNumberOfSpacesAndReverseEachWord() {
 		assertEquals("d1cba   hgf!e", anagram.createAnagram("a1bcd   efg!h"));
 	}
 }
