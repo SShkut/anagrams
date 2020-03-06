@@ -10,7 +10,7 @@ class AnagramTest {
 	private Anagram anagram;
 
 	@BeforeEach
-	void initialize() {
+	void setUp() {
 		anagram = new Anagram();
 	}
 
