@@ -1,4 +1,4 @@
-package main.java.com.foxminded.anagram;
+package com.foxminded.anagram;
 
 import static java.lang.Character.isAlphabetic;
 
