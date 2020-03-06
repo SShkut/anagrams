@@ -4,6 +4,7 @@ import static java.lang.Character.isAlphabetic;
 
 public class Anagram {
 	
+	// regex checks multiple blank characters
 	private static final String DELIMITER = "((?<= )|(?= ))";
 
 	public String createAnagram(String text) {		
