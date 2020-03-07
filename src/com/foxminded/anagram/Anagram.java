@@ -4,9 +4,14 @@ import static java.lang.Character.isAlphabetic;
 
 public class Anagram {
 	
-	private static final String DELIMITER = "\\b";
+	// regex checks multiple blank characters
+	private static final String DELIMITER = "((?<= )|(?= ))";
 
-	public String createAnagram(String text) {		
+	public String createAnagram(String text) {
+		if (text == null) {
+			return null;
+		}
+
 		String[] words = text.split(DELIMITER);
 		StringBuilder result = new StringBuilder();
 		
